@@ -19,7 +19,7 @@
         <tbody>
           <tr *ngFor="let g of gists | paginate: { itemsPerPage: 15, currentPage: p } ">
             <td><img class="gist-img" src="{{g.owner.avatar_url}}" alt="gist owner image"></td>
-            <td> <a href="{{g.owner.html_url}}"><span>{{g.owner.login}}</span></a></td>
+            <td> <a class="username" href="{{g.owner.html_url}}"><span>{{g.owner.login}}</span></a></td>
             <td>{{g.description}}</td>
             <td>
               <div class="ellipsis">
