@@ -1,0 +1,36 @@
+<div class="page-margin">
+  <div class="sort-holder">
+    <span>Sort : </span>
+    <span class="material-icons sort-icon" (click)="sortListing('Asc');">arrow_downward
+      </span>
+      <span class="material-icons sort-icon" (click)="sortListing('Desc');">arrow_upward
+      </span>
+</div>
+    <table class="table table-hover table-bordered table-responsive table-bg-color" >
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Github Link</th>
+            <th>Created At</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let g of gists | paginate: { itemsPerPage: 15, currentPage: p } ">
+            <td><img class="gist-img" src="{{g.owner.avatar_url}}" alt="gist owner image"></td>
+            <td> <a href="{{g.owner.html_url}}"><span>{{g.owner.login}}</span></a></td>
+            <td>{{g.description}}</td>
+            <td>
+              <div class="ellipsis">
+                <a href="{{g.html_url}}">{{g.html_url}}</a>
+              </div>
+            </td>
+            <td>{{g.created_at | date: 'short' }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="paginaton-holder">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      </div>
+</div>
